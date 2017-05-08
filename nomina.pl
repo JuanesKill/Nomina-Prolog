@@ -13,8 +13,10 @@ contrato('auxiliar','honorarios',10000).
 personal('juan','titular','hc',40).
 personal('miguel','auxiliar','mto',22).
 personal('nata','asistente','honorarios',40).
+adicional('tco',0.25).
+adicional('mto',0.15).
+adicional('hc',0).
+adicional('honorarios',0).
 semestre(18).
-bonotco(A,B):- personal(A,C,D,E), D=='tco', B is (25).
-bonomto(A,B):- personal(A,C,D,E), D=='mto', B is (15).
-salario(A,B) :- personal(A,C,D,E), contrato(C,D,X),semestre(S),B is(E*X*S).
-salariobono(A,B):- salario(A,X),bonotco(A,Y),bonomto(A,Z), B is (X +(X*(Y/100))+(X*(Z/100))).
+salario(A,B) :- personal(A,C,D,E), contrato(C,D,X),semestre(S),adicional(D,Y),Z is (E*X*S), B is (Z+(Z*Y)).
+
