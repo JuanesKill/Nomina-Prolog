@@ -17,3 +17,4 @@ semestre(18).
 bonotco(A,B):- personal(A,C,D,E), D=='tco', B is (25).
 bonomto(A,B):- personal(A,C,D,E), D=='mto', B is (15).
 salario(A,B) :- personal(A,C,D,E), contrato(C,D,X),semestre(S),B is(E*X*S).
+salariobono(A,B):- salario(A,X),bonotco(A,Y),bonomto(A,Z), B is (X +(X*(Y/100))+(X*(Z/100))).
